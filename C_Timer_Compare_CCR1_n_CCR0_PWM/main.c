@@ -17,9 +17,10 @@ int main(void)
      TA0CTL = TACLR;             // reset timer A
      TA0CTL |= MC_1;             // put timer A to UP mode. CCR0 has its functionality to reset timer only in up mode
                                  // MC_1 means we set up-mode for CCR0 only.
-     TA0CTL |= TASSEL_1;         // choose ACLK (32kHz)
-     TA0CCR0 = 32768;            // set PWM period. PWM - Pulse Width Modulation
-     TA0CCR1 = 1638;             // set PWM duty cycle
+     //TA0CTL |= TASSEL_1;         // choose ACLK (32kHz)
+     TA0CTL |= TASSEL_2;
+     TA0CCR0 = 20000;            // set PWM period. PWM - Pulse Width Modulation
+     TA0CCR1 = 900;             // set PWM duty cycle
 
      //-- setup compare IRQs
      TA0CCTL0 |= CCIE;            // Capture/compare interrupt enable. Local enable for CCR0
