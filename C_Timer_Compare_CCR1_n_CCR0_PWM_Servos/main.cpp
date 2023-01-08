@@ -18,15 +18,38 @@ void getVerticalPosition()
 
 void getInitialStablePosition()
 {
-    pw[0] = 1500;    // claw
+    __delay_cycles(8000000);
+
+    pw[0] = 1000;    // claw
+    pw[2] = 1500;   // claw rotator
+    pw[3] = 1500;   // claw lift
+    pw[1] = 1500;    // base top
+    pw[4] = 1000;   // base bottom
+    pw[5] = 1800;   // turret
+    pw[6] = 1500;
+    pw[7] = 1500;
+    __delay_cycles(1000000);
+    pw[0] = 1000;    // claw
     pw[2] = 1500;   // claw rotator
     pw[3] = 1500;   // claw lift
     pw[1] = 300;    // base top
     pw[4] = 1000;   // base bottom
-    pw[5] = 1500;   // turret
+    pw[5] = 1800;   // turret
     pw[6] = 1500;
     pw[7] = 1500;
-    __delay_cycles(5000000);
+    __delay_cycles(8000000);
+    pw[0] = 2500;   // claw
+    pw[2] = 1500;   // claw rotator
+    pw[3] = 1500;   // claw lift
+    pw[1] = 300;    // base top
+    pw[4] = 1000;   // base bottom
+    pw[5] = 1800;   // turret
+    pw[6] = 1500;
+    pw[7] = 1500;
+    __delay_cycles(8000000);
+
+
+
 }
 
 int main( void )
