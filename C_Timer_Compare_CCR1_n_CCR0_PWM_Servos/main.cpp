@@ -42,14 +42,15 @@ int main( void )
         __delay_cycles(500000);
     }*/
 
-    pw[0] = 1000;      // base top
+    pw[7] = 0;      // claw
     pw[1] = 0;      // claw rotator
     pw[2] = 0;      // claw lift
+    pw[0] = 0;      // base top
     pw[3] = 0;      // base bottom
     pw[4] = 0;      // turret
+
     pw[5] = 0;      // no equipment
     pw[6] = 0;      // no equipment
-    pw[7] = 0;   // claw
 
     return 0;
 }
