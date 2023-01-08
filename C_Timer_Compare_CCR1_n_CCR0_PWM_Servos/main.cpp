@@ -1,11 +1,4 @@
 #include <msp430.h>
-//
-// 8-channel PWM example for MSP430G2553
-//
-// Written by Ted Burke - last updated 4-4-2014
-//
-
-#include <msp430.h>
 
 // PWM channels duty cycle array
 int pw[] = {1000,1000,1000,1000,1000,1000,1000,1000};
@@ -36,6 +29,8 @@ int main( void )
     // on channel 0, 2 steps on channel 1, 3 steps on
     // channel 2, and so on.
     //
+
+    /*
     int channel, counter = 0;
     while(1)
     {
@@ -45,7 +40,16 @@ int main( void )
             pw[channel] = 1000 + (counter%(channel+1))*100;
         }
         __delay_cycles(500000);
-    }
+    }*/
+
+    pw[0] = 1000;      // base top
+    pw[1] = 0;      // claw rotator
+    pw[2] = 0;      // claw lift
+    pw[3] = 0;      // base bottom
+    pw[4] = 0;      // turret
+    pw[5] = 0;      // no equipment
+    pw[6] = 0;      // no equipment
+    pw[7] = 0;   // claw
 
     return 0;
 }
