@@ -1,73 +1,108 @@
+
+// PWM channels duty cycle array
+//int pw[] = {500,500,500,500,0,500};
+//int pw[] = {500,0,0,0,0,500};
+//int pw[] = {500,0,0,0,0,500};
+
+
+//
+// 8-channel PWM example for MSP430G2553
+//
+// Written by Ted Burke - last updated 4-4-2014
+//
+
 #include <msp430.h>
 
-int pw[] = {500,500,500,500,500,500,500,500};
+// PWM channels duty cycle array
+int pw[] = {1500,1500,1500,1500,1500,1500,1500,1000};
 
-void closeClaw()
+int main( void )
 {
-    //-- setup ports
-    //P1DIR |= BIT0;              // set P1.0 to output LED1
+    WDTCTL = WDTPW + WDTHOLD; // Disable watchdog timer
+
     P1DIR = 0b00111111; // Make P1.0-5 outputs
-    P1OUT |= BIT0;              // set LED1=1 initially
-    TA0CCR0 = 20000;            // set PWM period. PWM - Pulse Width Modulation
-    // set PWM duty cycle
-    TA0CCR1 = 900;              // almost full close claw
-    __delay_cycles(20000000);   // 1 cycle lasts 1 microsecond. 1 000 000 microseconds in 1 second
-}
 
-void openClaw()
-{
-    //-- setup ports
-    P1DIR |= BIT0;              // set P1.0 to output LED1
-    P1OUT |= BIT0;              // set LED1=1 initially
-    TA0CCR0 = 20000;            // set PWM period. PWM - Pulse Width Modulation
-    // set PWM duty cycle
-    TA0CCR1 = 500;              // open claw a little bit
-    __delay_cycles(20000000);   // 1 cycle lasts 1 microsecond. 1 000 000 microseconds in 1 second
-}
+    // Configure Timer A0 Compare interrupts
+    TA0CTL = TASSEL_2 + MC_1 + ID_0; // "up" mode, input divider = 1
+    TA0CCR0 = 2500;                  // set timer period to 2.5ms
+    TA0CCTL0 = CCIE;                 // enable CC0 interrupt
+    TA0CCR1 = 1500;                  // set pulse width to 1.5ms
+    TA0CCTL1 = CCIE;                 // enable CC1 interrupt
+    _BIS_SR(GIE);                    // global interrupt enable
 
-void rotateCntrClkVertJointOne()
-{
-    //-- setup ports
-    P1DIR |= BIT4;              // set P1.4 to output LED1
-    P1OUT |= BIT4;              //
-    TA0CCR0 = 20000;            // set PWM period. PWM - Pulse Width Modulation
-    // set PWM duty cycle
-    TA0CCR1 = 900;              // open claw a little bit
-    __delay_cycles(20000000);   // 1 cycle lasts 1 microsecond. 1 000 000 microseconds in 1 second
-}
+    // From this point on, we only need to write values
+    // into the pw[] array to set the duty cycle on all
+    // eight PWM channels (P1.0-7), or to be precise,
+    // whichever channels are actually enabled as digital
+    // outputs (six in this case).
+/* straight
+    pw[0] = 1700;      // base top //claw
+    pw[1] = 1700;      // claw rotator
+    pw[2] = 1700;      // claw lift
+    pw[3] = 1700;      // base bottom
+    pw[4] = 1700;      // turret
+    pw[5] = 1700;      // no equipment
+    pw[6] = 1700;      // no equipment
+    pw[7] = 1700;
+*/
 
-int main(void)
-{
-    WDTCTL = WDTPW | WDTHOLD;   // stop watchdog timer
-
-    //-- setup timer
-    TA0CTL = TACLR;             // reset timer A
-    TA0CTL |= MC_1;             // put timer A to UP mode. CCR0 has its functionality to reset timer only in up mode
-                                // MC_1 means we set up-mode for CCR0 only.
-    TA0CTL |= TASSEL_2;         // choose SMCLK 1 MHz
-
-    //-- setup compare IRQs
-    TA0CCTL0 |= CCIE;           // Capture/compare interrupt enable. Local enable for CCR0
-    TA0CCTL1 |= CCIE;           // Capture/compare interrupt enable. Local enable for CCR1
-    __enable_interrupt();       // enable maskable interrupts and only CCR0 and CCR1 can trigger an interrupt
-                                // because we enabled them with TACCTL0 |= CCIE and TACCTL1 |= CCIE
-    TA0CCTL0 &= ~CCIFG;         // clear flag for CCR0
-    TA0CCTL1 &= ~CCIFG;         // clear flag for CCR1
-
-    openClaw();
-    //closeClaw();
-    //rotateCntrClkVertJointOne();
+    // Minimum is 500. Maximum is 2500
+    pw[0] = 1500;                // claw
+    pw[1] = 1500;                // base top
+    pw[2] = 1500;                // claw rotator
+    pw[3] = 500;                 // claw lift
+    pw[4] = 1500;                // base bottom
+    pw[5] = 1500;                // turret is minimum
+    pw[6] = 1500;
+    pw[7] = 1500;
 
 
-    //-- main loop
-    //while(1){}
 
+    // base top
+ // claw rotator
+ // claw lift
+ // base bottom
+ // turret
+ // no equipment
+ // no equipment
+// claw
+
+
+    //
+    // A quick example to test: Do a different number of
+    // angle steps on each of the six PWM outputs. 1 step
+    // on channel 0, 2 steps on channel 1, 3 steps on
+    // channel 2, and so on.
+    //
+    /*
+    int channel, counter = 0;
+    while(1)
+    {
+        counter++;
+        for (channel=0 ; channel<6 ; ++channel)
+        {
+            pw[channel] = 1000 + (counter%(channel+1))*100;
+        }
+        __delay_cycles(500000);
+    }
+*/
     return 0;
 }
 
-//---------------- ISRs Interrupt Service Routines ----------------//
-#pragma vector = TIMER0_A0_VECTOR   // ISR for period
-__interrupt void ISR_TA0_CCR0(void)
+//
+// Timer A0 CC0 interrupt service routine.
+// This ISR is triggered when Timer A0 reaches
+// its maximum value TA0CCR0 and resets to zero.
+// This ISR starts a pulse on one PWM channel
+// every 2.5ms. It cycles through all eight channels
+// in turn. After starting the pulse, it sets
+// the TA0CCR1 register to the pulse width of
+// the current pin so that the pulse will be
+// ended by the partner ISR after the appropriate
+// time delay (for this channel's duty cycle).
+//
+#pragma vector=TIMER0_A0_VECTOR
+__interrupt void Timer_A0_CC0(void)
 {
     static n=0;         // PWM channel index
 
@@ -76,14 +111,18 @@ __interrupt void ISR_TA0_CCR0(void)
 
     n = (n+1)%8;        // Move on to next PWM channel
     TA0CCTL0 &= ~CCIFG; // Reset CC interrupt flag
-
-   // P1OUT |= BIT0;                  // turn LED1 on
-  //  TA0CCTL0 &= ~CCIFG;              // clear flag for CCR0
 }
-#pragma vector = TIMER0_A1_VECTOR
-__interrupt void ISR_TA0_CCR1(void)
+
+//
+// Timer A0 CC1 interrupt service routine.
+// This ISR is responsible for ending each PWM
+// pulse on all channels. It is triggered when
+// Timer A0 matches TA0CCR1, which is at a
+// different time for each PWM channel.
+//
+#pragma vector=TIMER0_A1_VECTOR
+__interrupt void Timer_A1_CC1(void)
 {
-    //P1OUT &= ~BIT0;                 // turn LED1 off
     P1OUT = 0;
-    TA0CCTL1 &= ~CCIFG;              // clear flag for CCR1
+    TA0CCTL1 &= ~CCIFG;
 }
