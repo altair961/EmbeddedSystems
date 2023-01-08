@@ -1,23 +1,37 @@
-
-// PWM channels duty cycle array
-//int pw[] = {500,500,500,500,0,500};
-//int pw[] = {500,0,0,0,0,500};
-//int pw[] = {500,0,0,0,0,500};
-
-
-//
-// 8-channel PWM example for MSP430G2553
-//
-// Written by Ted Burke - last updated 4-4-2014
-//
-
 #include <msp430.h>
 
 // PWM channels duty cycle array
 int pw[] = {1500,1500,1500,1500,1500,1500,1500,1000};
 
+void getVerticalPosition()
+{
+    pw[0] = 1500;   // claw
+    pw[2] = 1500;   // claw rotator
+    pw[3] = 1500;   // claw lift
+    pw[1] = 1500;   // base top
+    pw[4] = 1500;   // base bottom
+    pw[5] = 1500;   // turret
+    pw[6] = 1500;
+    pw[7] = 1500;
+    __delay_cycles(5000000);
+}
+
+void getInitialStablePosition()
+{
+    pw[0] = 1500;    // claw
+    pw[2] = 1500;   // claw rotator
+    pw[3] = 1500;   // claw lift
+    pw[1] = 300;    // base top
+    pw[4] = 1000;   // base bottom
+    pw[5] = 1500;   // turret
+    pw[6] = 1500;
+    pw[7] = 1500;
+    __delay_cycles(5000000);
+}
+
 int main( void )
 {
+
     WDTCTL = WDTPW + WDTHOLD; // Disable watchdog timer
 
     P1DIR = 0b00111111; // Make P1.0-5 outputs
@@ -35,38 +49,8 @@ int main( void )
     // eight PWM channels (P1.0-7), or to be precise,
     // whichever channels are actually enabled as digital
     // outputs (six in this case).
-/* straight
-    pw[0] = 1700;      // base top //claw
-    pw[1] = 1700;      // claw rotator
-    pw[2] = 1700;      // claw lift
-    pw[3] = 1700;      // base bottom
-    pw[4] = 1700;      // turret
-    pw[5] = 1700;      // no equipment
-    pw[6] = 1700;      // no equipment
-    pw[7] = 1700;
-*/
 
-    // Minimum is 500. Maximum is 2500
-    pw[0] = 1500;                // claw
-    pw[1] = 1500;                // base top
-    pw[2] = 1500;                // claw rotator
-    pw[3] = 500;                 // claw lift
-    pw[4] = 1500;                // base bottom
-    pw[5] = 1500;                // turret is minimum
-    pw[6] = 1500;
-    pw[7] = 1500;
-
-
-
-    // base top
- // claw rotator
- // claw lift
- // base bottom
- // turret
- // no equipment
- // no equipment
-// claw
-
+    getInitialStablePosition();
 
     //
     // A quick example to test: Do a different number of
