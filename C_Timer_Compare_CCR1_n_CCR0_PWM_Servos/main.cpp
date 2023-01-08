@@ -25,11 +25,11 @@ void openClaw()
 void rotateCntrClkVertJointOne()
 {
     //-- setup ports
-    P1DIR |= BIT4;              // set P1.0 to output LED1
-    P1OUT |= BIT4;              // set LED1=1 initially
+    P1DIR |= BIT4;              // set P1.4 to output LED1
+    P1OUT |= BIT4;              //
     TA0CCR0 = 20000;            // set PWM period. PWM - Pulse Width Modulation
     // set PWM duty cycle
-    TA0CCR1 = 500;              // open claw a little bit
+    TA0CCR1 = 900;              // open claw a little bit
     __delay_cycles(20000000);   // 1 cycle lasts 1 microsecond. 1 000 000 microseconds in 1 second
 }
 
@@ -51,9 +51,9 @@ int main(void)
     TA0CCTL0 &= ~CCIFG;         // clear flag for CCR0
     TA0CCTL1 &= ~CCIFG;         // clear flag for CCR1
 
-    openClaw();
-    closeClaw();
-    //rotateCntrClkVertJointOne();
+    //openClaw();
+    //closeClaw();
+    rotateCntrClkVertJointOne();
 
 
     //-- main loop
@@ -66,12 +66,12 @@ int main(void)
 #pragma vector = TIMER0_A0_VECTOR   // ISR for period
 __interrupt void ISR_TA0_CCR0(void)
 {
-    P1OUT |= BIT0;                  // turn LED1 on
+    P1OUT |= BIT4;                  // turn LED1 on
     TA0CCTL0 &= ~CCIFG;              // clear flag for CCR0
 }
 #pragma vector = TIMER0_A1_VECTOR
 __interrupt void ISR_TA0_CCR1(void)
 {
-    P1OUT &= ~BIT0;                 // turn LED1 off
+    P1OUT &= ~BIT4;                 // turn LED1 off
     TA0CCTL1 &= ~CCIFG;              // clear flag for CCR1
 }
