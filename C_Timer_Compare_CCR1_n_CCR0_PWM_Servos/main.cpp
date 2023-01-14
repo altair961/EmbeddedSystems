@@ -1,8 +1,8 @@
 #include <msp430.h>
 
 // PWM channels duty cycle array
-int pw[] = {1500,1500,1500,1500,1500,1500,1500,1000};
-
+int pw[] = {1500,1500,1500,1500,1500,1500,1500,1500};
+/*
 void getVerticalPosition()
 {
     pw[0] = 1500;   // claw
@@ -14,42 +14,50 @@ void getVerticalPosition()
     pw[6] = 1500;
     pw[7] = 1500;
     __delay_cycles(5000000);
+}*/
+
+//  2500 ms is maximum +90 degrees
+//  1500 ms is middle 0 degrees
+//  450 ms is minimum -90 degrees
+void getPosition1()
+{
+
+    pw[0] = 500;
+    __delay_cycles(1000000);
+    pw[1] = 500;
+    __delay_cycles(1000000);
+    pw[2] = 500;
+    __delay_cycles(1000000);
+    pw[3] = 500;
+    __delay_cycles(1000000);
+    pw[4] = 500;
+    __delay_cycles(1000000);
+    pw[5] = 500;
+ //   pw[6] = 500;
+  //  pw[7] = 500;
 }
 
 void getInitialStablePosition()
 {
-    __delay_cycles(8000000);
 
-    pw[0] = 1000;    // claw
-    pw[2] = 1500;   // claw rotator
-    pw[3] = 1500;   // claw lift
-    pw[1] = 1500;    // base top
-    pw[4] = 1000;   // base bottom
-    pw[5] = 1800;   // turret
-    pw[6] = 1500;
-    pw[7] = 1500;
+    pw[0] = 2500;
     __delay_cycles(1000000);
-    pw[0] = 1000;    // claw
-    pw[2] = 1500;   // claw rotator
-    pw[3] = 1500;   // claw lift
-    pw[1] = 300;    // base top
-    pw[4] = 1000;   // base bottom
-    pw[5] = 1800;   // turret
-    pw[6] = 1500;
-    pw[7] = 1500;
-    __delay_cycles(8000000);
-    pw[0] = 2500;   // claw
-    pw[2] = 1500;   // claw rotator
-    pw[3] = 1500;   // claw lift
-    pw[1] = 300;    // base top
-    pw[4] = 1000;   // base bottom
-    pw[5] = 1800;   // turret
-    pw[6] = 1500;
-    pw[7] = 1500;
-    __delay_cycles(8000000);
+    pw[1] = 2500;
+    __delay_cycles(1000000);
+    pw[2] = 2500;
+    __delay_cycles(1000000);
+    pw[3] = 2500;
+    __delay_cycles(1000000);
+    pw[4] = 2500;
+    __delay_cycles(1000000);
+    pw[5] = 2500;
+  //  pw[6] = 2500;
+  //  pw[7] = 2500;
+}
 
-
-
+void delay()
+{
+    __delay_cycles(5000000);
 }
 
 int main( void )
@@ -57,8 +65,8 @@ int main( void )
 
     WDTCTL = WDTPW + WDTHOLD; // Disable watchdog timer
 
-    P1DIR = 0b00111111; // Make P1.0-5 outputs
-
+    // P1DIR = 0b00111111; // Make P1.0-5 outputs
+    P1DIR = 0x7F; // Make P1.0-6 outputs
     // Configure Timer A0 Compare interrupts
     TA0CTL = TASSEL_2 + MC_1 + ID_0; // "up" mode, input divider = 1
     TA0CCR0 = 2500;                  // set timer period to 2.5ms
@@ -73,15 +81,42 @@ int main( void )
     // whichever channels are actually enabled as digital
     // outputs (six in this case).
 
-    getInitialStablePosition();
-
+    while(1)
+    {
+          pw[0] = 2500;
+          delay();
+          pw[1] = 2500;
+          delay();
+          pw[2] = 2500;
+          delay();
+          pw[3] = 2500;
+          delay();
+          pw[4] = 2500;
+          delay();
+          pw[5] = 2500;
+          __delay_cycles(5000000);
+          pw[0] = 500;
+          delay();
+          pw[1] = 500;
+          delay();
+          pw[2] = 500;
+          delay();
+          pw[3] = 500;
+          delay();
+          pw[4] = 500;
+          delay();
+          pw[5] = 500;
+          __delay_cycles(5000000);
+    }
+    //getVerticalPosition();
+    //reachToAnObject();
     //
     // A quick example to test: Do a different number of
     // angle steps on each of the six PWM outputs. 1 step
     // on channel 0, 2 steps on channel 1, 3 steps on
     // channel 2, and so on.
     //
-    /*
+/*
     int channel, counter = 0;
     while(1)
     {
@@ -111,10 +146,12 @@ int main( void )
 #pragma vector=TIMER0_A0_VECTOR
 __interrupt void Timer_A0_CC0(void)
 {
+
     static n=0;         // PWM channel index
 
     P1OUT = 1 << n;     // Set P1.n high
     TA0CCR1 = pw[n];    // Set timer for current pin's pulse width
+
 
     n = (n+1)%8;        // Move on to next PWM channel
     TA0CCTL0 &= ~CCIFG; // Reset CC interrupt flag
@@ -131,5 +168,7 @@ __interrupt void Timer_A0_CC0(void)
 __interrupt void Timer_A1_CC1(void)
 {
     P1OUT = 0;
+
+
     TA0CCTL1 &= ~CCIFG;
 }
