@@ -46,6 +46,63 @@ int main( void )
     // whichever channels are actually enabled as digital
     // outputs (six in this case).
 
+    /**
+     *     // stable
+    pw[0] = 1500;
+    pw[1] = 1000;
+    pw[2] = 1200;
+    pw[3] = 2500;
+    pw[4] = 1250;
+    pw[5] = 1200; // 500 - 1200
+     */
+    // stable
+    pw[0] = 1500;
+    pw[1] = 1000;
+    pw[2] = 1200;
+    pw[3] = 2500;
+    pw[4] = 1250;
+    pw[5] = 1200; // 500 - 1200
+    delay();
+    // lift claw
+    pw[0] = 1500;
+    delay();
+    pw[1] = 1000;
+    delay();
+    pw[2] = 1200;
+    delay();
+    pw[3] = 1250;
+    delay();
+    pw[4] = 1250;
+    delay();
+    pw[5] = 1200; // 500 - 1200
+    delay();
+    // rotate turret
+    pw[0] = 2000;
+    delay();
+    pw[1] = 1000;
+    delay();
+    pw[2] = 1200;
+    delay();
+    pw[3] = 1250;
+    delay();
+    pw[4] = 1250;
+    delay();
+    pw[5] = 1200; // 500 - 1200
+    delay();
+    // rotate claw
+    pw[0] = 2000;
+    delay();
+    pw[1] = 1000;
+    delay();
+    pw[2] = 1200;
+    delay();
+    pw[3] = 1250;
+    delay();
+    pw[4] = 2200;
+    delay();
+    pw[5] = 1200; // 500 - 1200
+    delay();
+/*
     while(1)
     {
           pw[0] = 1500; // turret
@@ -72,7 +129,7 @@ int main( void )
           delay();
           pw[5] = 500;
           delay();
-    }
+    }*/
     //getVerticalPosition();
     //reachToAnObject();
     //
