@@ -19,45 +19,10 @@ void getVerticalPosition()
 //  2500 ms is maximum +90 degrees
 //  1500 ms is middle 0 degrees
 //  450 ms is minimum -90 degrees
-void getPosition1()
-{
-
-    pw[0] = 500;
-    __delay_cycles(1000000);
-    pw[1] = 500;
-    __delay_cycles(1000000);
-    pw[2] = 500;
-    __delay_cycles(1000000);
-    pw[3] = 500;
-    __delay_cycles(1000000);
-    pw[4] = 500;
-    __delay_cycles(1000000);
-    pw[5] = 500;
- //   pw[6] = 500;
-  //  pw[7] = 500;
-}
-
-void getInitialStablePosition()
-{
-
-    pw[0] = 2500;
-    __delay_cycles(1000000);
-    pw[1] = 2500;
-    __delay_cycles(1000000);
-    pw[2] = 2500;
-    __delay_cycles(1000000);
-    pw[3] = 2500;
-    __delay_cycles(1000000);
-    pw[4] = 2500;
-    __delay_cycles(1000000);
-    pw[5] = 2500;
-  //  pw[6] = 2500;
-  //  pw[7] = 2500;
-}
 
 void delay()
 {
-    __delay_cycles(5000000);
+    __delay_cycles(2000000);
 }
 
 int main( void )
@@ -83,30 +48,30 @@ int main( void )
 
     while(1)
     {
-          pw[0] = 2500;
+          pw[0] = 1500; // turret
           delay();
-          pw[1] = 2500;
+          pw[1] = 1900; // base bottom
           delay();
-          pw[2] = 2500;
+          pw[2] = 2500; // base top
           delay();
           pw[3] = 2500;
           delay();
           pw[4] = 2500;
           delay();
           pw[5] = 2500;
-          __delay_cycles(5000000);
-          pw[0] = 500;
           delay();
-          pw[1] = 500;
+          pw[0] = 2500; // turret
           delay();
-          pw[2] = 500;
+          pw[1] = 1300; // base bottom
+          delay();
+          pw[2] = 500; // base top
           delay();
           pw[3] = 500;
           delay();
           pw[4] = 500;
           delay();
           pw[5] = 500;
-          __delay_cycles(5000000);
+          delay();
     }
     //getVerticalPosition();
     //reachToAnObject();
