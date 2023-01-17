@@ -89,7 +89,7 @@ int main( void )
     delay();
     pw[5] = 1200; // 500 - 1200
     delay();
-    // rotate claw
+    // rotate and open claw
     pw[0] = 2000;
     delay();
     pw[1] = 1000;
@@ -100,7 +100,20 @@ int main( void )
     delay();
     pw[4] = 2200;
     delay();
-    pw[5] = 1200; // 500 - 1200
+    pw[5] = 500; // 500 is opening and 1200 is closing
+    delay();
+    // upper base goes down and claw lift goes up
+    pw[0] = 2000;
+    delay();
+    pw[1] = 1100;
+    delay();
+    pw[2] = 900;
+    delay();
+    pw[3] = 1250;
+    delay();
+    pw[4] = 2200;
+    delay();
+    pw[5] = 500; // 500 is opening and 1200 is closing
     delay();
 /*
     while(1)
