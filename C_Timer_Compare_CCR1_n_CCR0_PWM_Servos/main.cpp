@@ -49,63 +49,19 @@ int main( void )
     // stable
     pw[0] = 1500;
     pw[1] = 1000;
-    pw[2] = 1200;
+    pw[2] = 1250; // 1200
     pw[3] = 2500;
     pw[4] = 1250;
     pw[5] = 1200; // 500 - 1200
     delay();
-    // lift claw
-    pw[0] = 1500;
     delay();
-    pw[1] = 1000;
     delay();
-    pw[2] = 1200;
+    pw[2] = 1000;
+    pw[3] = 1100;
     delay();
-    pw[3] = 1250;
-    delay();
-    pw[4] = 1000;
-    delay();
-    pw[5] = 1200; // 500 - 1200
-    delay();
-    // rotate turret
     pw[0] = 2000;
-    delay();
-    pw[1] = 1000;
-    delay();
-    pw[2] = 1200;
-    delay();
-    pw[3] = 1250;
-    delay();
-    pw[4] = 1250;
-    delay();
-    pw[5] = 1200; // 500 - 1200
-    delay();
-    // rotate and open claw
-    pw[0] = 2000;
-    delay();
-    pw[1] = 1000;
-    delay();
-    pw[2] = 1200;
-    delay();
-    pw[3] = 900;
-    delay();
     pw[4] = 2200;
-    delay();
-    pw[5] = 500; // 500 is opening and 1200 is closing
-    delay();
-    // lower base goes down
-    pw[0] = 2000;
-    delay();
-    pw[1] = 1100;
-    delay();
-    pw[2] = 1000; //900
-    delay();
-    pw[3] = 900;
-    delay();
-    pw[4] = 2200;
-    delay();
-    pw[5] = 500; // 500 is opening and 1200 is closing
-    delay();
+
     while(1)
     {
         ;
