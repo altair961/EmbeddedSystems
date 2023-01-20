@@ -22,7 +22,7 @@ void getVerticalPosition()
 
 void delay()
 {
-    __delay_cycles(500000);
+    __delay_cycles(1000000);
 }
 
 int main( void )
@@ -54,13 +54,19 @@ int main( void )
     pw[4] = 1250;
     pw[5] = 1200; // 500 - 1200
     delay();
-    delay();
-    delay();
     pw[2] = 1000;
     pw[3] = 1100;
     delay();
     pw[0] = 2000;
     pw[4] = 2200;
+    delay();
+    pw[1] = 1200;
+    pw[3] = 800;
+    delay();
+    pw[1] = 900;
+    pw[5] = 500;
+    delay();
+    pw[1] = 500;
 
     while(1)
     {
