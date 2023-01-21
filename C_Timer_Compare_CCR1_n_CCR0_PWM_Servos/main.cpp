@@ -92,9 +92,13 @@ int main( void )
       pw[1] = 1000; //900
       delay();
       delay();
-      pw[5] = 900; // 500 - 1200 // close claw to grab the object
-
-      /*
+      pw[5] = 850; // 500 - 1200 // close claw to grab the object
+      delay();
+      delay();
+      pw[3] = 900;
+      delay();
+      delay();
+/*
       //Object has been grabbed move backwards
       //pw[1] = 1100; // 1500
       pw[3] = 1000; // 600
@@ -117,7 +121,7 @@ int main( void )
       delay();
       delay();
       pw[2] = 1250;
-      pw[1] = 1500;*/
+      pw[1] = 1500;
 
    //   pw[3] = 1000;
 
