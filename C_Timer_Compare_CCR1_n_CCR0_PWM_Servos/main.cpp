@@ -68,28 +68,29 @@ int main( void )
       delay();
       pw[0] = 2300;
       delay();
-      pw[5] = 500; // 500 - 1200 // open the claw preparing for grab
-      pw[3] = 1250;
+      //pw[5] = 500; // 500 - 1200 // open the claw preparing for grab
+     // pw[3] = 1250;
+   /*   delay();
+      delay();
+      delay();
+      pw[1] = 900;*/
       delay();
       delay();
       delay();
-      pw[1] = 900;
-      delay();
-      delay();
-      delay();
-      pw[1] = 1100; // 1500
+    //  pw[1] = 1100; // 1500
       pw[3] = 1000; // 600
       delay();
       delay();
-      pw[1] = 1500;
+     // pw[1] = 1500;
       pw[3] = 600;
       delay();
-      pw[5] = 1100; // 500 - 1200*/
-      delay();
-      delay();
-      delay();
+      pw[3] = 1350;
+      pw[5] = 500; // 500 - 1200 // close claw to grab
+      pw[1] = 1000; //900
+
+      /*
       //Object has been grabbed move backwards
-      pw[1] = 1100; // 1500
+      //pw[1] = 1100; // 1500
       pw[3] = 1000; // 600
       delay();
       delay();
@@ -107,6 +108,14 @@ int main( void )
       delay();
       delay();
       pw[1] = 1000;
+      delay();
+      delay();
+      pw[2] = 1250;
+      pw[1] = 1500;*/
+
+   //   pw[3] = 1000;
+
+  //    pw[0] = 1500;
 
     while(1)
     {
