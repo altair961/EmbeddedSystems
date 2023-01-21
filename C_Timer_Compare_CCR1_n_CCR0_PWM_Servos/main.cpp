@@ -48,25 +48,55 @@ int main( void )
 
     // stable
     pw[0] = 1500;
-    pw[1] = 1000;
-    pw[2] = 1250; // 1200
+    pw[1] = 1400;
+    pw[2] = 1250;
     pw[3] = 2500;
     pw[4] = 1250;
     pw[5] = 1200; // 500 - 1200
     delay();
+    delay();
+    delay();
+    pw[0] = 2000;
+    delay();
+    delay();
+    delay();
+    pw[1] = 1100;
+    pw[2] = 1000;
+    pw[4] = 2500;
+    /*
+    delay();
+    delay();
     pw[2] = 1000;
     pw[3] = 1100;
+    delay();
+    delay();
     delay();
     pw[0] = 2000;
     pw[4] = 2200;
     delay();
-    pw[1] = 1200;
-    pw[3] = 800;
     delay();
+    delay();
+    pw[1] = 1600;
+    delay();
+    pw[5] = 500;
+    delay();
+    delay();
+    pw[2] = 700;
+ //   pw[3] = 800;
+    delay();
+    delay();
+    delay();
+    pw[2] = 1000;
+    pw[1] = 1800;
+    pw[3] = 1200;
+    //pw[1] = 1900;*/
+
+ /*   pw[3] = 800;
+  /*  delay();
     pw[1] = 900;
     pw[5] = 500;
     delay();
-    pw[1] = 500;
+    pw[1] = 500;*/
 
     while(1)
     {
