@@ -40,6 +40,7 @@ int main( void )
       pw[3] = 2100;
       pw[4] = 2250; // 1250
       pw[5] = 1000; // 500 - 1200
+
       delay();
       delay();
       delay();
@@ -92,12 +93,48 @@ int main( void )
       pw[1] = 1000; //900
       delay();
       delay();
-      pw[5] = 850; // 500 - 1200 // close claw to grab the object
+      pw[5] = 950; // 500 - 1200 // close claw to grab the object
       delay();
       delay();
       pw[3] = 900;
       delay();
       delay();
+      pw[0] = 600; // rotate to the right
+      delay();
+      delay();
+      pw[3] = 1350;
+      delay();
+      pw[5] = 500; // release the object
+      delay();
+      delay();
+      delay();
+      pw[3] = 600;
+      delay();
+      delay();
+      delay();
+      pw[0] = 1500;
+      delay();
+      delay();
+      delay();
+      pw[1] = 1100; //1000 // 800
+      delay();
+      pw[2] = 1250;
+      delay();
+      pw[3] = 2100;
+      delay();
+      pw[4] = 2250; // 1250
+      delay();
+      pw[5] = 1000; // 500 - 1200
+      delay();
+      pw[1] = 1300; //1000 // 800
+      delay();
+      pw[2] = 900;
+      while(1)
+      {
+          ;
+      }
+
+
 /*
       //Object has been grabbed move backwards
       //pw[1] = 1100; // 1500
@@ -127,10 +164,6 @@ int main( void )
 
   //    pw[0] = 1500;
 
-    while(1)
-    {
-        ;
-    }
 
     //
     // A quick example to test: Do a different number of
