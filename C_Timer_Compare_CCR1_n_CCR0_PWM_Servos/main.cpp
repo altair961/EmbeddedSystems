@@ -53,7 +53,7 @@ int main( void )
       pw[0] = 1500;
       pw[1] = 1400;
       pw[2] = 1250;
-      pw[3] = 2500;
+      pw[3] = 2300;
       pw[4] = 1250;
       pw[5] = 1200; // 500 - 1200
       delay();
@@ -79,8 +79,9 @@ int main( void )
       pw[3] = 700;
       delay();
       delay();
+      pw[3] = 900;
       delay();
-      pw[5] = 600; // 500 - 1200 // open the claw preparing for grab
+      pw[5] = 500; // 500 - 1200 // open the claw preparing for grab
       pw[3] = 1250;
       delay();
       delay();
