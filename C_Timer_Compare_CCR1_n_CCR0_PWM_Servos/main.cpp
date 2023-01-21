@@ -93,7 +93,7 @@ int main( void )
       delay();
       delay();
       delay();
-      pw[1] = 1100;
+      pw[1] = 1500;
       pw[3] = 800;
 
     while(1)
