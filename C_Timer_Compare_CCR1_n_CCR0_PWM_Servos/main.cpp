@@ -51,10 +51,10 @@ int main( void )
 
       // stable
       pw[0] = 1500;
-      pw[1] = 1400;
+      pw[1] = 800;
       pw[2] = 1250;
       pw[3] = 2100;
-      pw[4] = 1250;
+      pw[4] = 2250; // 1250
       pw[5] = 1200; // 500 - 1200
       delay();
       delay();
@@ -90,8 +90,11 @@ int main( void )
       delay();
       delay();
       pw[1] = 900;
-
-
+      delay();
+      delay();
+      delay();
+      pw[1] = 1100;
+      pw[3] = 800;
 
     while(1)
     {
