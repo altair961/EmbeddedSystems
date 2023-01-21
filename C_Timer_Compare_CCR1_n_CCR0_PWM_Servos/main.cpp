@@ -80,6 +80,7 @@ int main( void )
       delay();
       delay();
       delay();
+      pw[5] = 600; // 500 - 1200 // open the claw preparing for grab
       pw[3] = 1250;
       delay();
       delay();
