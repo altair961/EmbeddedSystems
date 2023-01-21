@@ -49,9 +49,19 @@ int main( void )
     // whichever channels are actually enabled as digital
     // outputs (six in this case).
 
+    //stable 1
+      pw[0] = 1500;
+      pw[1] = 1500; // 800
+      pw[2] = 1500;
+      pw[3] = 2100;
+      pw[4] = 2250; // 1250
+      pw[5] = 1200; // 500 - 1200
+      delay();
+      delay();
+      delay();
       // stable
       pw[0] = 1500;
-      pw[1] = 800;
+      pw[1] = 1000; // 800
       pw[2] = 1250;
       pw[3] = 2100;
       pw[4] = 2250; // 1250
@@ -100,7 +110,7 @@ int main( void )
       pw[1] = 1500;
       pw[3] = 600;
       delay();
-      pw[5] = 900; // 500 - 1200
+      pw[5] = 900; // 500 - 1200*/
 
     while(1)
     {
