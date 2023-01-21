@@ -61,20 +61,22 @@ int main( void )
       delay();
       delay();
       delay();
-      pw[1] = 1100;
-      delay();
-      delay();
-      //pw[1] = 1500;
-      pw[2] = 1100;
+      pw[1] = 800;
+      pw[2] = 800;//1100;
+      pw[3] = 800;//1100;
       delay();
       delay();
       delay();
       pw[3] = 500;
       delay();
-      //shortDelay();
       pw[2] = 500;
       delay();
       pw[4] = 2250; // horizontal with engine on top
+      delay();
+      delay();
+      delay();
+      pw[1] = 1000;
+      pw[3] = 800;
     /*
     delay();
     delay();
