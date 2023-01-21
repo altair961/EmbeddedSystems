@@ -24,7 +24,10 @@ void delay()
 {
     __delay_cycles(1000000);
 }
-
+void shortDelay()
+{
+    __delay_cycles(500000);
+}
 int main( void )
 {
 
@@ -46,23 +49,32 @@ int main( void )
     // whichever channels are actually enabled as digital
     // outputs (six in this case).
 
-    // stable
-    pw[0] = 1500;
-    pw[1] = 1400;
-    pw[2] = 1250;
-    pw[3] = 2500;
-    pw[4] = 1250;
-    pw[5] = 1200; // 500 - 1200
-    delay();
-    delay();
-    delay();
-    pw[0] = 2000;
-    delay();
-    delay();
-    delay();
-    pw[1] = 1100;
-    pw[2] = 1000;
-    pw[4] = 2500;
+      // stable
+      pw[0] = 1500;
+      pw[1] = 1400;
+      pw[2] = 1250;
+      pw[3] = 2500;
+      pw[4] = 1250;
+      pw[5] = 1200; // 500 - 1200
+      delay();
+      delay();
+      delay();
+      delay();
+      delay();
+      pw[1] = 1100;
+      delay();
+      delay();
+      //pw[1] = 1500;
+      pw[2] = 1100;
+      delay();
+      delay();
+      delay();
+      pw[3] = 500;
+      delay();
+      //shortDelay();
+      pw[2] = 500;
+      delay();
+      pw[4] = 2250; // horizontal with engine on top
     /*
     delay();
     delay();
