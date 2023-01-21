@@ -100,45 +100,14 @@ int main( void )
       pw[1] = 1500;
       pw[3] = 600;
       delay();
-/*      delay();
-      delay();
-      pw[1] = 1700;
-      pw[2] = 1250;*/
+      pw[5] = 900; // 500 - 1200
+
     while(1)
     {
         ;
     }
 
-/*
-    while(1)
-    {
-          pw[0] = 1500; // turret
-          delay();
-          pw[1] = 1900; // base bottom
-          delay();
-          pw[2] = 2500; // base top
-          delay();
-          pw[3] = 2500;
-          delay();
-          pw[4] = 2500;
-          delay();
-          pw[5] = 2500;
-          delay();
-          pw[0] = 2500; // turret
-          delay();
-          pw[1] = 1300; // base bottom
-          delay();
-          pw[2] = 500; // base top
-          delay();
-          pw[3] = 500;
-          delay();
-          pw[4] = 500;
-          delay();
-          pw[5] = 500;
-          delay();
-    }*/
-    //getVerticalPosition();
-    //reachToAnObject();
+
     //
     // A quick example to test: Do a different number of
     // angle steps on each of the six PWM outputs. 1 step
