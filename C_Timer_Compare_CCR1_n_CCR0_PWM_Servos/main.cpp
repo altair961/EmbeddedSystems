@@ -2,19 +2,6 @@
 
 // PWM channels duty cycle array
 int pw[] = {1500,1500,1500,1500,1500,1500,1500,1500};
-/*
-void getVerticalPosition()
-{
-    pw[0] = 1500;   // claw
-    pw[2] = 1500;   // claw rotator
-    pw[3] = 1500;   // claw lift
-    pw[1] = 1500;   // base top
-    pw[4] = 1500;   // base bottom
-    pw[5] = 1500;   // turret
-    pw[6] = 1500;
-    pw[7] = 1500;
-    __delay_cycles(5000000);
-}*/
 
 //  2500 ms is maximum +90 degrees
 //  1500 ms is middle 0 degrees
@@ -50,7 +37,7 @@ int main( void )
     // outputs (six in this case).
 
     //stable 1
-      pw[0] = 1500;
+     /* pw[0] = 1500;
       pw[1] = 1500; // 800
       pw[2] = 1500;
       pw[3] = 2100;
@@ -58,10 +45,10 @@ int main( void )
       pw[5] = 1200; // 500 - 1200
       delay();
       delay();
-      delay();
+      delay();*/
       // stable
       pw[0] = 1500;
-      pw[1] = 1000; // 800
+      pw[1] = 1100; //1000 // 800
       pw[2] = 1250;
       pw[3] = 2100;
       pw[4] = 2250; // 1250
@@ -111,6 +98,22 @@ int main( void )
       pw[3] = 600;
       delay();
       pw[5] = 900; // 500 - 1200*/
+      delay();
+      delay();
+      delay();
+      //Object has been grabbed move backwards
+      pw[1] = 1100; // 1500
+      pw[3] = 1000; // 600
+      delay();
+      delay();
+      delay();
+      pw[1] = 900;
+      delay();
+      pw[1] = 1500;
+      pw[3] = 600;
+      delay();
+      delay();
+      pw[0] = 600;
 
     while(1)
     {
