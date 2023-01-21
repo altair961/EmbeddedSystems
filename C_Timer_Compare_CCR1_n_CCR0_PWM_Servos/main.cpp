@@ -59,11 +59,12 @@ int main( void )
       delay();
       delay();
       delay();
+      pw[1] = 1000;
       delay();
       delay();
       pw[1] = 800;
       pw[2] = 800;//1100;
-      pw[3] = 800;//1100;
+      pw[3] = 700;//800
       delay();
       delay();
       delay();
@@ -89,6 +90,8 @@ int main( void )
       delay();
       delay();
       pw[1] = 900;
+
+
 
     while(1)
     {
