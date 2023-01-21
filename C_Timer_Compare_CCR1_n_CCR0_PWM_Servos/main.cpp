@@ -11,10 +11,7 @@ void delay()
 {
     __delay_cycles(1000000);
 }
-void shortDelay()
-{
-    __delay_cycles(500000);
-}
+
 int main( void )
 {
 
@@ -36,23 +33,13 @@ int main( void )
     // whichever channels are actually enabled as digital
     // outputs (six in this case).
 
-    //stable 1
-     /* pw[0] = 1500;
-      pw[1] = 1500; // 800
-      pw[2] = 1500;
-      pw[3] = 2100;
-      pw[4] = 2250; // 1250
-      pw[5] = 1200; // 500 - 1200
-      delay();
-      delay();
-      delay();*/
       // stable
       pw[0] = 1500;
       pw[1] = 1100; //1000 // 800
       pw[2] = 1250;
       pw[3] = 2100;
       pw[4] = 2250; // 1250
-      pw[5] = 1200; // 500 - 1200
+      pw[5] = 1100; // 500 - 1200
       delay();
       delay();
       delay();
@@ -97,7 +84,7 @@ int main( void )
       pw[1] = 1500;
       pw[3] = 600;
       delay();
-      pw[5] = 1000; // 500 - 1200*/
+      pw[5] = 1100; // 500 - 1200*/
       delay();
       delay();
       delay();
@@ -117,12 +104,14 @@ int main( void )
       delay();
       delay();
       pw[5] = 500; // Open claw to release the object
+      delay();
+      delay();
+      pw[1] = 1000;
 
     while(1)
     {
         ;
     }
-
 
     //
     // A quick example to test: Do a different number of
