@@ -75,8 +75,16 @@ int main( void )
       delay();
       delay();
       delay();
-      pw[1] = 1000;
-      pw[3] = 800;
+      pw[1] = 600; //900
+      pw[3] = 700;
+      delay();
+      delay();
+      delay();
+      pw[3] = 1250;
+      delay();
+      delay();
+      delay();
+      pw[1] = 900;
     /*
     delay();
     delay();
