@@ -104,6 +104,8 @@ int main( void )
       delay();
       pw[3] = 1350;
       delay();
+      delay();
+      delay();
       pw[5] = 500; // release the object
       delay();
       delay();
