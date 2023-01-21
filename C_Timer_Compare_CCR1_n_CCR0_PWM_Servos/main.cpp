@@ -97,7 +97,7 @@ int main( void )
       pw[1] = 1500;
       pw[3] = 600;
       delay();
-      pw[5] = 900; // 500 - 1200*/
+      pw[5] = 1000; // 500 - 1200*/
       delay();
       delay();
       delay();
@@ -114,6 +114,9 @@ int main( void )
       delay();
       delay();
       pw[0] = 600;
+      delay();
+      delay();
+      pw[5] = 500; // Open claw to release the object
 
     while(1)
     {
